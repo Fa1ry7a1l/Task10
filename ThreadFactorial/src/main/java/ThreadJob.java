@@ -39,6 +39,12 @@ public class ThreadJob implements Runnable {
                 semaphore.release();
             }
             var factVal = factorial(value);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
             System.out.printf("f(%d) = %s\n",value,factVal.toString());
         }
         System.out.println("поток " + Thread.currentThread().getName() + " завершился");
